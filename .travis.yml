@@ -1,0 +1,16 @@
+os: osx
+language: generic
+osx_image: xcode9.4
+env:
+  -PARENT="1BPIKK7sxbfdDu59wKmp3dl83lXpTkHRJ"
+  -IPA_PATH="niuz.ipa"
+before_script:
+  - pip install six
+  - brew update
+  - brew install gdrive
+  - brew install --HEAD libimobiledevice
+  - brew install ideviceinstaller ios-deploy
+  - git clone https://github.com/flutter/flutter.git -b beta --depth 1
+  - git clone https://oauth2:${MY_ACCESS_TOKEN}@gitlab.com/anykao/ci-demo.git
+script:
+  - ls -l
