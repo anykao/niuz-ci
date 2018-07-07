@@ -11,6 +11,12 @@ before_script:
   - brew install --HEAD libimobiledevice
   - brew install ideviceinstaller ios-deploy
   - git clone https://github.com/flutter/flutter.git -b beta --depth 1
-  - git clone https://oauth2:${MY_ACCESS_TOKEN}@gitlab.com/anykao/ci-demo.git
+  - git clone https://oauth2:${MY_ACCESS_TOKEN}@gitlab.com/anykao/niuz.git
 script:
-  - ls -l
+  - cd niuz
+  - ../flutter/bin/flutter -v build ios --no-codesign  - mkdir -p Payload
+  - mv build/ios/iphoneos/Runner.app Payload
+  - zip -r ${IPA_PATH} Payload
+  - ls -lh ${IPA_PATH}
+after_script:
+  - gdrive upload --refresh-token ${REFRESH_TOKEN} --parent ${PARENT} ${IPA_PATH}
