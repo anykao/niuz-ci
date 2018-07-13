@@ -9,13 +9,15 @@ before_script:
   - pip install six
   - brew update
   - brew install gdrive
-  - brew install --HEAD libimobiledevice
-  - brew install ideviceinstaller ios-deploy
+  - brew install libimobiledevice
+  - brew install ideviceinstaller
+  - brew install ios-deploy
   - git clone https://github.com/flutter/flutter.git -b beta --depth 1
+  - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
   - git clone https://oauth2:${MY_ACCESS_TOKEN}@gitlab.com/anykao/niuz.git
 script:
   - cd niuz
-  - ../flutter/bin/flutter -v build ios --no-codesign
+  - flutter -v build ios --no-codesign
   - mkdir -p Payload
   - mv build/ios/iphoneos/Runner.app Payload
   - zip -r ${IPA_PATH} Payload
