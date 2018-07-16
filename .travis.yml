@@ -16,6 +16,8 @@ before_script:
   - git clone https://github.com/flutter/flutter.git -b beta --depth 1
   - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
   - git clone https://oauth2:${MY_ACCESS_TOKEN}@gitlab.com/anykao/niuz.git
+  - git clone https://github.com/anykao/video_player
+  - git clone https://github.com/anykao/chewie
 script:
   - cd niuz
   - flutter -v build ios --no-codesign
