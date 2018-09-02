@@ -27,3 +27,6 @@ script:
   - ls -lh ${IPA_PATH}
 after_script:
   - gdrive upload --refresh-token ${REFRESH_TOKEN} --parent ${PARENT} ${IPA_PATH}
+cache:
+  directories:
+    - $HOME/.pub-cache
