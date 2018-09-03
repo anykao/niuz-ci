@@ -6,10 +6,10 @@ env:
   -TOKEN="dnzg-ghsa-ctnp-eitj"
   -IPA_PATH="niuz.ipa"
 before_script:
-  - export HOMEBREW_NO_AUTO_UPDATE=1
+  # - export HOMEBREW_NO_AUTO_UPDATE=1
   - set -o pipefail
   - pip install six
-  # - brew update
+  - brew update
   - brew install gdrive
   - brew install libimobiledevice
   - brew install ideviceinstaller
